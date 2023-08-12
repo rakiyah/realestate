@@ -79,9 +79,9 @@ UPDATE `sellers` SET `email` = :seller_email_Input, `phone` = :seller_phone_Inpu
 DELETE FROM `sellers` WHERE `name` = :seller_name_Input;
 
 -- JOIN for FK's
-SELECT seller.*, a.name AS agent_name
+SELECT seller.*, agents.name AS agent_name
 FROM sellers AS seller
-JOIN agents AS a ON seller.agent_id = a.agent_id;
+JOIN agents ON seller.agent_id = agents.agent_id;
 
 ----------------------
 -- properties has potentialBuyer page

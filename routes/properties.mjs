@@ -11,8 +11,6 @@ property_router.get('/properties', function(req,res){
     const q_buyers = 'SELECT `agent_id`, `email`, `phone`, `name`, `buyer_id` FROM `potentialBuyers`;'
 
     db.pool.query(q_properties, function(err, rows, fields) {
-        // render index.hbs and send renderer an object
-        // where 'data' is equal to 'rows' we received from query
         const properties = rows
 
         db.pool.query(q_sellers, function(err, rows, fields) {

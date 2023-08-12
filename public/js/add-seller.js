@@ -1,3 +1,40 @@
+const addSellerForm = document.getElementById('add-seller-form')
+
+addSellerForm.addEventListener('submit', function (e) {
+    e.preventDefault()
+
+    const input_email = document.getElementById('input-email')
+    const input_phone = document.getElementById('input-phone')
+    const input_name = document.getElementById('input-name')
+    const input_agent = document.getElementById('input-agentid')
+
+    const data = {
+        email: input_email.value,
+        phone: input_phone.value,
+        name: input_name.value,
+        agent_id: input_agent.value
+    }
+
+    const xhttp = new XMLHttpRequest
+    xhttp.open('POST', '/add-seller', true)
+    xhttp.setRequestHeader('Content-type', 'application/json')
+
+    xhttp.onreadystatechange = () => {
+        if (xhttp.readyState == 4 && xhttp.status == 200) {
+            addRowtoTable(xhttp.response)
+
+            input_email.value = ''
+            input_phone.value = ''
+            input_name.value = ''
+            input_agent.value = ''
+        } else if (xhttp.readyState == 4 && xhttp.status != 200) {
+            console.log('there was an error with the input')
+        }
+    }
+
+    xhttp.send(JSON.stringify(data))
+})
+
 addRowtoTable = (data) => {
     console.log(data)
     const current_table = document.getElementById('sellers-table')

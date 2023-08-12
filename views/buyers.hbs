@@ -14,11 +14,11 @@
 <table id="buyers-table">
     <thead>
         <tr>
-            {{#each data.[0]}}
-            <th>
-                {{@key}}
-            </th>
-            {{/each}}
+            <th>Buyer ID</th>
+            <th>Email</th>
+            <th>Phone #</th>
+            <th>Name</th>
+            <th>Agent</th>
         </tr>
     </thead>
 
@@ -29,7 +29,7 @@
             <td>{{this.email}}</td>
             <td>{{this.phone}}</td>
             <td>{{this.name}}</td>
-            <td>{{this.agent_id}}</td>
+            <td>{{this.agent_name}}</td>
             <td><button onclick="deleteBuyer({{this.buyer_id}})">DELETE</button></td>
         </tr>
         {{/each}}

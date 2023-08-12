@@ -4,7 +4,7 @@ function deleteSeller(seller_id) {
     }
 
     const xhttp = new XMLHttpRequest()
-    xhttp.open('DELETE', '/delete-sellerf', true)
+    xhttp.open('DELETE', '/delete-seller', true)
     xhttp.setRequestHeader('Content-type', 'application/json')
 
     xhttp.onreadystatechange = () => {

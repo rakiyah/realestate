@@ -4,8 +4,11 @@ import db from '../database/db-connector.mjs'
 
 const buyer_router = express.Router()
 
+
 buyer_router.get('/buyers', function (req,res) {
-    const q_buyers = `SELECT * FROM potentialBuyers`
+    const q_buyers =    `SELECT pbuyer.*, a.name AS agent_name
+                        FROM potentialBuyers AS pbuyer
+                        JOIN agents AS a ON pbuyer.agent_id = a.agent_id;`
     const q_agents = `SELECT agent_id, email, phone, name FROM agents`
     db.pool.query(q_buyers, function(error, rows, fields) {
         const buyers = rows
@@ -17,6 +20,7 @@ buyer_router.get('/buyers', function (req,res) {
         
     })
 })
+
 
 buyer_router.post('/add-buyer', function(req,res) {
     const data = req.body
