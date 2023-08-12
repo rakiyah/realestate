@@ -37,6 +37,7 @@ seller_router.post('/add-seller', function(req,res) {
                     console.log(error)
                     res.sendStatus(400)
                 } else {
+                    console.log(rows)
                     res.send(rows)
                 }
             })

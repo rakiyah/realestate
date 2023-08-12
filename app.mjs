@@ -16,18 +16,17 @@ const PORT = 14114
 app.engine('.hbs', engine({extname: ".hbs"}))
 app.set('view engine', '.hbs')
 
+// middleware
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(express.static('public'))
 
+// routes
 app.use('', agent_router)
 app.use('', seller_router)
 app.use('', buyer_router)
 app.use('', property_router)
 app.use('', buy_prop_router)
-
-
-// ROUTES
 
 app.get('/', function(req,res) {
     res.render('index')
