@@ -14,26 +14,31 @@
 <table id="properties-table">
     <thead>
         <tr>
-            {{#each data.[0]}}
-            <th>
-                {{@key}}
-            </th>
-            {{/each}}
+            <th>Property ID</th>
+            <th>Address</th>
+            <th>Listed Price</th>
+            <th>Buyer</th>
+            <th>Buyer's Agent</th>
+            <th>Seller</th>
+            <th>Seller's Agent</th>
+            <th>On Market</th>
+            <th>Sell Price</th>
+            <th>Sell Date</th>
         </tr>
     </thead>
 
-    <tbody>
+    <tbody id="properties-tbody">
         {{#each data}}
         <tr>
             <td>{{this.property_id}}</td>
             <td>{{this.address}}</td>
-            <td>{{this.listed_price}}</td>
-            <td>{{this.buyer_id}}</td>
-            <td>{{this.potentialBuyers_agent_id}}</td>
-            <td>{{this.seller_id}}</td>
-            <td>{{this.sellers_agent_id}}</td>
+            <td>${{this.listed_price}}</td>
+            <td>{{this.buyer_name}}</td>
+            <td>{{this.buyer_agent}}</td>
+            <td>{{this.seller_name}}</td>
+            <td>{{this.seller_agent}}</td>
             <td>{{this.on_market}}</td>
-            <td>{{this.sell_price}}</td>
+            <td>${{this.sell_price}}</td>
             <td>{{this.sell_date}}</td>
             <td><button>DELETE</button></td>
         </tr>
@@ -67,12 +72,12 @@
         {{/each}}
     </select>
 
-    <label for="input-market" id="input-market">On Market: </label>
+    <label for="input-market">On Market: </label>
     <input type="checkbox" id="input-market" name="on_market" value="1">
 
     <input type="submit" class="submit-btn">
-    
 </form>
+<script src="./js/add-property.js"></script>
 
 <h4>Update a Property</h4>
 <form id="put-property-form">
@@ -97,24 +102,10 @@
         {{/each}}
     </select>
 
-    <select name="input-buyers-agentid" id="input-buyers-agentid">
-        <option value="">Select Buyer's Agent</option>
-        {{#each agents}}
-        <option value="{{this.agent_id}}">{{this.name}}</option>
-        {{/each}}
-    </select>
-
     <select name="input-sellerid" id="input-sellerid">
         <option value="">Select a Seller</option>
         {{#each sellers}}
         <option value="{{this.seller_id}}">{{this.name}}</option>
-        {{/each}}
-    </select>
-
-    <select name="input-sellers-agentid" id="input-sellers-agentid">
-        <option value="">Select Seller's Agent</option>
-        {{#each agents}}
-        <option value="{{this.agent_id}}">{{this.name}}</option>
         {{/each}}
     </select>
 
@@ -125,4 +116,3 @@
     
 </form>
 
-<script src="./js/add-property.js"></script>

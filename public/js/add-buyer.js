@@ -41,6 +41,7 @@ addBuyerForm.addEventListener('submit', function (e) {
 })
 
 addRowtoTable = (data) => {
+    console.log(data)
     const current_table = document.getElementById('buyers-table')
 
     const new_row_index = current_table.rows.length
