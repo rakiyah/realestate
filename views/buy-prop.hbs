@@ -1,39 +1,25 @@
-<h2>Properties has Potenial Buyers</h2>
-
-<nav>
-    <ul>
-        <li><a href='/'>Index</a></li>
-        <li><a href='/properties'>Properties</a></li>
-        <li><a href='/agents'>Agents</a></li>
-        <li><a href='/buyers'>Potential Buyers</a></li>
-        <li><a href='/sellers'>Sellers</a></li>
-        <li><a href='/buy-prop'>Properties has Potenial Buyers</a></li>
-    </ul>
-</nav>
+<h2>Properties has Potential Buyers</h2>
 
 <table id="buy-prop-table">
     <thead>
         <tr>
-            {{#each data.[0]}}
-            <th>
-                {{@key}}
-            </th>
-            {{/each}}
+            <th>Buyer Name</th>
+            <th>Property Address</th>
         </tr>
     </thead>
 
     <tbody>
         {{#each data}}
         <tr>
-            <td>{{this.buyer_id}}</td>
-            <td>{{this.property_id}}</td>
-            <td><button onclick="">DELETE</button></td>
+            <td>{{this.buyer_name}}</td>
+            <td>{{this.property_address}}</td>
+            <td><button onclick="deleteBuyProp({{this.buyer_id}}, {{this.property_id}})">DELETE</button></td>
         </tr>
         {{/each}}
     </tbody>
 </table>
 
-<script src="./js/delete-buyp-prop.js"></script>
+<script src="./js/delete-buy-prop.js"></script>
 
 <h4>Add a new Property-Potential Buyer relationship</h4>
 <form id="add-buy-prop-form">
@@ -53,24 +39,27 @@
         {{/each}}
     </select>
     <input type="submit" class="submit-btn">
-
-    <h4>Update a Property-Potential Buyer relationship</h4>
-    <form id="buy-prop-form">
-        <label for="input-buyer">Buyer: </label>
-        <select name="input-name" id="select-buyer">
-            <option value="">Select a Potential Buyer</option>
-            {{#each buyers}}
-            <option value="{{this.buyer_id}}">{{this.name}}</option>
-            {{/each}}
-        </select>
-
-        <label for="input-property">Property: </label>
-        <select name="input-property" id="select-property">
-            <option value="">Select a Property</option>
-            {{#each properties}}
-            <option value="{{this.property_id}}">{{this.address}}</option>
-            {{/each}}
-        </select>
-        <input type="submit" class="submit-btn">
-        </form>
 </form>
+
+<script src="./js/add-buy-prop.js"></script>
+<script src="./js/delete-buy-prop.js"></script>
+{{!-- 
+<h4>Update a Property-Potential Buyer relationship</h4>
+<form id="update-buy-prop-form">
+    <label for="input-buyer-update">Buyer: </label>
+    <select name="input-name" id="select-buyer">
+        <option value="">Select a Potential Buyer</option>
+        {{#each buyers}}
+        <option value="{{this.buyer_id}}">{{this.name}}</option>
+        {{/each}}
+    </select>
+
+    <label for="input-property">Property: </label>
+    <select name="input-property" id="select-property">
+        <option value="">Select a Property</option>
+        {{#each properties}}
+        <option value="{{this.property_id}}">{{this.address}}</option>
+        {{/each}}
+    </select>
+    <input type="submit" class="submit-btn"> --}}
+{{!-- </form> --}}

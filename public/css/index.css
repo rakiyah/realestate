@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,500&display=swap');
+
+:root {
+    --medium-color: #1760BF;
+    --dark-color:#022859;
+    --light-color:#1570BFcc;
+    --accent-color: #A1A7CB;
+    --light-background-color: #1570bfc1;
+    --red-color: red; 
+    --green-color: green;
+    --medium-dark-color: #1355ab;
+  }
+
+body {
+    color:var(--accent-color);
+    text-shadow: 2px 2px 4px var(--dark-color);
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+
+

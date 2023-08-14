@@ -13,6 +13,19 @@ agent_router.get('/agents', function(req,res) {
     })
 })
 
+agent_router.get('/agents/:agent_id', function(req,res) {
+    const agent_id = req.params.agent_id
+
+    const q = `SELECT * FROM agents WHERE agent_id = ?`
+
+    db.pool.query(q, [agent_id], function(err, rows, fields) {
+        if (err) {
+            console.log(err)
+            res.sendStatus(500)
+        } else res.send(rows[0])
+    })
+})
+
 agent_router.post('/add-agent', function(req,res) {
     const data = req.body
 
@@ -39,13 +52,14 @@ agent_router.post('/add-agent', function(req,res) {
 
 agent_router.put('/put-agent', function(req,res,next) {
     const data = req.body
-
-    const name = parseInt(data.name)
+    console.log(data)
+    const agent_id = parseInt(data.agent_id)
+    const name = data.name
     const email = data.email
     const phone = data.phone
 
-    const q_update = `UPDATE agents SET email = ?, phone = ? WHERE agents.agent_id = ?`
-    db.pool.query(q_update, [email, phone, name], function(error, rows, fields) {
+    const q_update = `UPDATE agents SET name = ?, email = ?, phone = ? WHERE agents.agent_id = ?`
+    db.pool.query(q_update, [name, email, phone, agent_id], function(error, rows, fields) {
         if (error) {
             console.log(error)
             res.sendStatus(400)
@@ -69,6 +83,7 @@ agent_router.delete('/delete-agent', function(req,res,next) {
         else res.sendStatus(204)
     })
 })
+
 
 
 export default agent_router

@@ -13,13 +13,22 @@ import buy_prop_router from './routes/buy-prop.mjs'
 const app = express()
 const PORT = 14114
 
+// app.use(express.static('public'))
+// express.static.mime.types['css'] = 'text/css';
+
+
 app.engine('.hbs', engine({extname: ".hbs"}))
 app.set('view engine', '.hbs')
+
+app.use(express.static('public'))
+// app.use(express.static(__dirname + '/public'));
+express.static.mime.types['css'] = 'text/css';
 
 // middleware
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
-app.use(express.static('public'))
+
+
 
 // routes
 app.use('', agent_router)

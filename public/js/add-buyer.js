@@ -19,6 +19,7 @@ addBuyerForm.addEventListener('submit', function (e) {
         name: name_value,
         agent_id: agent_value
     }
+    console.log(data)
 
     const xhttp = new XMLHttpRequest
     xhttp.open('POST', '/add-buyer', true)
@@ -56,11 +57,11 @@ addRowtoTable = (data) => {
     const name_cell = document.createElement('TD')
     const agent_cell = document.createElement('TD')
 
-    buyer_id_cell = new_row.buyer_id
-    email_cell = new_row.email
-    phone_cell = new_row.phone
-    name_cell = new_row.name
-    agent_cell = new_row.agent_id
+    buyer_id_cell.innerHTML = new_row.buyer_id
+    email_cell.innerHTML = new_row.email
+    phone_cell.innerHTML = new_row.phone
+    name_cell.innerHTML = new_row.name
+    agent_cell.innerHTML = new_row.agent_id
 
     const delete_cell = document.createElement('button')
     delete_cell.innerHTML = 'DELETE'

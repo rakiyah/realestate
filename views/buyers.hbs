@@ -1,15 +1,4 @@
-<h2>Potential Buyers Page</h2>
-
-<nav>
-    <ul>
-        <li><a href='/'>Index</a></li>
-        <li><a href='/properties'>Properties</a></li>
-        <li><a href='/agents'>Agents</a></li>
-        <li><a href='/buyers'>Potential Buyers</a></li>
-        <li><a href='/sellers'>Sellers</a></li>
-        <li><a href='/buy-prop'>Properties has Potenial Buyers</a></li>
-    </ul>
-</nav>
+<h1>Potential Buyers</h1>
 
 <table id="buyers-table">
     <thead>
@@ -29,7 +18,8 @@
             <td>{{this.email}}</td>
             <td>{{this.phone}}</td>
             <td>{{this.name}}</td>
-            <td>{{this.agent_name}}</td>
+            <td>
+                {{this.agent_name}}</td>
             <td><button onclick="deleteBuyer({{this.buyer_id}})">DELETE</button></td>
         </tr>
         {{/each}}
@@ -54,6 +44,7 @@
         {{#each agents}}
         <option value="{{this.agent_id}}">{{this.name}}</option>
         {{/each}}
+        <option value="NULL">None</option>
     </select>
 
     <input type="submit" class="submit-btn">
@@ -63,26 +54,30 @@
 
 <h4>Update a Potential Buyer: </h4>
 <form id="update-buyer-form">
-    <label for="input-name">Name: </label>
-    <select name="input-name" id="select-buyer">
+    
+    <select name="select-buyer" id="select-buyer">
         <option value="">Select a Potential Buyer to update</option>
         {{#each data}}
         <option value="{{this.buyer_id}}">{{this.name}}</option>
         {{/each}}
     </select>
+    
+    <label for="input-name-update">Name:</label>
+    <input type="text" name="input-name-update" id="input-name-update">
 
-    <label for="input-email">Email: </label>
-    <input type="text" name="input-email" id="input-email-update">
+    <label for="input-email-update">Email:</label>
+    <input type="text" name="input-email-update" id="input-email-update">
 
-    <label for="input-phone">Phone: </label>
-    <input type="text" name="input-phone" id="input-phone-update">
+    <label for="input-phone-update">Phone:</label>
+    <input type="text" name="input-phone-update" id="input-phone-update">
 
-    <label for="input-agent"></label>
-    <select name="input-agent" id="select-agent">
+    <label for="input-agent-update">Agent:</label>
+    <select name="input-agent-update" id="select-agent-update">
         <option value="">Change Agent</option>
         {{#each agents}}
         <option value="{{this.agent_id}}">{{this.name}}</option>
         {{/each}}
+        <option value="NULL">None</option>
     </select>
 
     <input type="submit" class="submit-btn">

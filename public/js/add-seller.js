@@ -51,11 +51,11 @@ addRowtoTable = (data) => {
     const name_cell = document.createElement('TD')
     const agent_cell = document.createElement('TD')
 
-    seller_id_cell = new_row.seller_id
-    email_cell = new_row.email
-    phone_cell = new_row.phone
-    name_cell = new_row.name
-    agent_cell = new_row.agent_id
+    seller_id_cell.innerHTML = new_row.seller_id
+    email_cell.innerHTML = new_row.email
+    phone_cell.innerHTML = new_row.phone
+    name_cell.innerHTML = new_row.name
+    agent_cell.innerHTML = new_row.agent_id
 
     const delete_cell = document.createElement('button')
     delete_cell.innerHTML = 'DELETE'

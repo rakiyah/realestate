@@ -1,25 +1,9 @@
-
-<h2>Agents Page</h2>
-
-<nav>
-    <ul>
-        <li><a href='/'>Index</a></li>
-        <li><a href='/properties'>Properties</a></li>
-        <li><a href='/agents'>Agents</a></li>
-        <li><a href='/buyers'>Potential Buyers</a></li>
-        <li><a href='/sellers'>Sellers</a></li>
-        <li><a href='/buy-prop'>Properties has Potenial Buyers</a></li>
-    </ul>
-</nav>
+<script src="./js/confirm-delete-a.js"></script>
+<h1>Agents</h1>
 
 <table id="agents-table">
     <thead>
         <tr>
-            {{!-- {{#each data.[0]}}
-            <th>
-                {{@key}}
-            </th>
-            {{/each}} --}}
             <th>Agent ID</th>
             <th>Email</th>
             <th>Phone #</th>
@@ -61,13 +45,16 @@
 <h4>Update an Agent: </h4>
 <form id="update-agent-form">
 
-    <label for="input-name">Name: </label>
-    <select name="input-name" id="select-agent">
+    <label for="select-agent">Name: </label>
+    <select name="select-agent" id="select-agent">
         <option value="">Select an Agent to update</option>
         {{#each data}}
         <option value="{{this.agent_id}}">{{this.name}}</option>
         {{/each}}
     </select>
+
+    <label for="input-name">Name: </label>
+    <input type="text" name="input-name" id="input-name-update">
 
     <label for="input-email">Email: </label>
     <input type="text" name="input-email" id="input-email-update">

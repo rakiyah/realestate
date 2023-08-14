@@ -47,15 +47,15 @@ addRowtoTable = (data) => {
     const new_row = parsed_data[parsed_data.length - 1]
 
     const row = document.createElement('TR')
-    let agent_id_cell = document.createElement('TD')
-    let agent_email_cell = document.createElement('TD')
-    let agent_phone_cell = document.createElement('TD')
-    let agent_name_cell = document.createElement('TD')
+    const agent_id_cell = document.createElement('TD')
+    const agent_email_cell = document.createElement('TD')
+    const agent_phone_cell = document.createElement('TD')
+    const agent_name_cell = document.createElement('TD')
 
-    agent_id_cell = new_row.agent_id
-    agent_email_cell = new_row.email
-    agent_phone_cell = new_row.phone
-    agent_name_cell = new_row.name
+    agent_id_cell.innerHTML = new_row.agent_id
+    agent_email_cell.innerHTML = new_row.email
+    agent_phone_cell.innerHTML = new_row.phone
+    agent_name_cell.innerHTML = new_row.name
 
     const delete_cell = document.createElement('button')
     delete_cell.innerHTML = 'DELETE'

@@ -1,18 +1,17 @@
-function deleteAgent(agent_id) {
-    
+function deleteProperty(property_id) {
+
     const data = {
-        agent_id: agent_id
+        property_id: property_id
     }
 
     const xhttp = new XMLHttpRequest()
-    xhttp.open('DELETE', '/delete-agent', true)
+    xhttp.open('DELETE', '/delete-property', true)
     xhttp.setRequestHeader('Content-type', 'application/json')
 
     xhttp.onreadystatechange = () => {
         if (xhttp.readyState == 4 && xhttp.status == 204) {
-            // reload page 
+            // reload page
             location.reload()
-            deleteRow(agent_id)
         } else if (xhttp.readyState == 4 && xhttp.status != 204) {
             console.log('there was an error with the input')
         }
@@ -20,15 +19,3 @@ function deleteAgent(agent_id) {
 
     xhttp.send(JSON.stringify(data))
 }
-
-
-function deleteRow(agent_id) {
-    const table = document.getElementById('agents-table')
-    for (let i = 0, row; row = table.rows[i]; i++) {
-        if (table.rows[i].getAttribute('data-value')) {
-            table.deleteRow(i)
-            break
-        }
-    }
-}
-

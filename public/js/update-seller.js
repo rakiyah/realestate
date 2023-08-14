@@ -1,23 +1,35 @@
+const input_seller_id = document.getElementById('select-seller')
+const input_name = document.getElementById('input-name-update')
+const input_email = document.getElementById('input-email-update')
+const input_phone = document.getElementById('input-phone-update')
+const input_agent = document.getElementById('select-agent-update')
+
+const sellerSelect = document.getElementById('select-seller')
+sellerSelect.addEventListener('change', function() {
+    const selected_seller_id = sellerSelect.value
+
+    fetch(`/sellers/${selected_seller_id}`)
+        .then(response => response.json())
+        .then(seller => {
+            input_name.value = seller.name,
+            input_email.value = seller.email,
+            input_phone.value = seller.phone
+            input_agent.value = seller.agent_id
+        })
+})
+
+
 const updateSellerForm = document.getElementById('update-seller-form')
 
 updateSellerForm.addEventListener('submit', function (e) {
     e.preventDefault()
 
-    const input_name = document.getElementById('select-seller')
-    const input_email = document.getElementById('input-email-update')
-    const input_phone = document.getElementById('input-phone-update')
-    const input_agent = document.getElementById('select-agent')
-
-    const input_name_value = input_name.value
-    const input_email_value = input_email.value
-    const input_phone_value = input_phone.value
-    const input_agent_value = input_agent.value
-
     const data = {
-        name: input_name_value,
-        email: input_email_value,
-        phone: input_phone_value,
-        agent_id: input_agent_value
+        seller_id: input_seller_id.value,
+        name: input_name.value,
+        email: input_email.value,
+        phone: input_phone.value,
+        agent_id: input_agent.value
     }
 
     const xhttp = new XMLHttpRequest()
@@ -26,7 +38,8 @@ updateSellerForm.addEventListener('submit', function (e) {
 
     xhttp.onreadystatechange = () => {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
-            updateRow(xhttp.response, input_name_value)
+            // reload page
+            location.reload()
         } else if (xhttp.readyState == 4 && xhttp.status != 200) {
             console.log('there was an error with the input')
         }
@@ -35,21 +48,3 @@ updateSellerForm.addEventListener('submit', function (e) {
     xhttp.send(JSON.stringify(data))
 })
 
-function updateRow(data, seller_id) {
-    const parsed_data = JSON.parse(data)
-
-    const table = document.getElementById('sellers-table')
-
-    for (let i = 0, row; row=table.rows[i]; i++) {
-        if (table.rows[i].getAttribute('data-value') == seller_id) {
-            const update_row_index = table.getElementsByTagName('tr')[i]
-
-            const tds = update_row_index.getElementsByTagName('td')
-            tds[1].innerText = parsed_data.email
-            tds[2].innerText = parsed_data.phone
-            tds[3].innerText = parsed_data.agent_id
-
-            break
-        }
-    }
-}
